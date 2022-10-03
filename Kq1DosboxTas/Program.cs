@@ -1,17 +1,33 @@
+using System.Diagnostics;
+using Kq1DosboxTas.GUI;
+using Kq1DosboxTas.MemoryAccess;
+
 namespace Kq1DosboxTas
 {
-    internal static class Program
+    public static class Program
     {
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            StartTasPanel();
+        }
+
+        public static void StartTasPanel()
+        {
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new KQ1TasPanel());
+        }
+
+
+        // not part of the application, run the methods in the 'TestMemoryOperations'
+        // for some examples of reading and writing memory data
+        public static void RunMemoryOperationExamples()
+        {
+            TestMemoryOperations.RunTrials();
         }
     }
 }
+
